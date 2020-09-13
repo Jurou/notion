@@ -3,11 +3,11 @@
     <title>Greeting Message</title> 
     <style>
 #lbl {
-    font-family: monospace;
+    font-family: sans-serif;
     font-size: xx-large;
     color: #626262;
     padding: 5px;
-    border: 1px solid #ececec;
+    /*border: 1px solid #ececec;*/
     text-align: center;
     line-height: 1.5;
     height:85%
@@ -39,7 +39,7 @@ body{
     var today = new Date();
     var hrs = today.getHours();
     var dayOfWeek = weekday[today.getDay()];
-    var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
+    var date = dayOfWeek+", " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
 
     var greet;
 
