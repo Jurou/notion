@@ -169,12 +169,25 @@ var month = new Array(12);
   month[9] = "October";
   month[10] = "November";
   month[11] = "December";
+    var month2 = new Array(12);
+  month[0] = "Jan";
+  month[1] = "Feb";
+  month[2] = "Mar";
+  month[3] = "Apr";
+  month[4] = "May";
+  month[5] = "Jun";
+  month[6] = "Jul";
+  month[7] = "Aug";
+  month[8] = "Sep";
+  month[9] = "Oct";
+  month[10] = "Novr";
+  month[11] = "Dec";
 var today = new Date();
 var hour = zeros(twelveHour(today.getHours()));
 var minutes = zeros(today.getMinutes());
 var seconds = zeros(today.getSeconds());
 var dayOfWeek = weekday[today.getDay()];
-var monthOfYear = month[today.getMonth()];
+var monthOfYear = month2[today.getMonth()];
 var date = dayOfWeek+", " + today.getDate() + " "+ monthOfYear + " " +today.getFullYear()  ;
     
 if(twelveHour(today.getHours()) >12){
