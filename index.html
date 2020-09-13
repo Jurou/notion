@@ -51,20 +51,20 @@ h1 {
 .clock {
     display: inline-block;
     font-family: monospace;
-    font-weight: bold;
-    font-size: 1.2em;
+    /*font-weight: bold;*/
+    font-size: large;
     /* padding-left: 20px; */
     color: #000000;
 }
 
 .time {
     display: inline-block;
-    min-width: 37px;
+    /*min-width: 37px;*/
     color: #000;
 }
 
 .colon {
-    font-size: 1.1em;
+    font-size: large;
     display: inline-block;
 }
 
@@ -74,16 +74,29 @@ h1 {
     /* padding-right: 30px; */
     /* border-right: 2px solid #295C7B; */
     font-family: monospace;
-    font-size: 1.2em;
+    font-size: large;
     color: #000;
 }
 .greet{
-    
     min-width: 162px;
     /* padding-right: 30px; */
     font-family: monospace;
-    font-size: 1.2em;
+    font-size: xx-large;
     color: #000;
+}
+#lbl {
+    font-family: monospace;
+    font-size: xx-large;
+    color: #000000;
+    padding: 5px;
+    /*border: 1px solid #ececec;*/
+    text-align: center;
+    line-height: 1.5;
+    height:85%;
+    display: inline-block;
+}
+      #date{
+    font-size:large;
 }
 
     </style>
@@ -95,14 +108,14 @@ h1 {
   <div class="table-cell">
     
     <div class="card">
-        <div class="greet" id="greet"></div>
-      <div class="date" id="date"></div>
-      <div class="clock">
-        <div class="time" id="hour"></div>
-        <div class="colon">:</div>
-        <div class="time" id="min"></div>
-        <div class="colon">:</div>
-        <div class="time" id="sec"></div>
+      <div class="greet" id = "greet"></div>
+           <div class="greet" id="lbl"></div>
+          <div class="clock">
+            <div class="time" id="hour"></div>
+            <div class="colon">:</div>
+            <div class="time" id="min"></div>
+            <div class="colon">:</div>
+            <div class="time" id="sec"></div>
       </div>
     </div>
     
@@ -110,37 +123,6 @@ h1 {
 </div>
 
 <script>
-    function date() {
-var today = new Date();
-document.getElementById('date').innerHTML = today.toDateString();
-}
-
-
-function clock() {
-var today = new Date();
-var hour = zeros(twelveHour(today.getHours()));
-var minutes = zeros(today.getMinutes());
-var seconds = zeros(today.getSeconds());
-if(twelveHour(today.getHours()) >12){
-    seconds+=" pm"
-}
-else{
-    seconds+=" am"
-}
-hrs = today.getHours();
-if (hrs < 12)
-        greet = 'Good Morning  ';
-    else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon ';
-    else if (hrs >= 17 && hrs <= 24)
-        greet = 'Good Evening  ';
-// console.log(today.toLocaleTimeString());
-document.getElementById('greet').innerHTML = greet;
-document.getElementById('hour').innerHTML = hour;
-document.getElementById('min').innerHTML = minutes;
-document.getElementById('sec').innerHTML = seconds;
-}
-
 function twelveHour(hour) {
 if (hour > 12) {
     return hour -= 12 
@@ -159,12 +141,65 @@ return num;
 }
 
 function dateTime() {
-date();
 clock();
 setTimeout(dateTime, 500);
 }
 
-dateTime()
+dateTime();
+  
+function clock() {
+var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+var month = new Array(12);
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+var today = new Date();
+var hour = zeros(twelveHour(today.getHours()));
+var minutes = zeros(today.getMinutes());
+var seconds = zeros(today.getSeconds());
+var dayOfWeek = weekday[today.getDay()];
+var monthOfYear = month[today.getMonth()];
+var date = dayOfWeek+", " + today.getDate() + " "+ monthOfYear + " " +today.getFullYear()  ;
+    
+if(twelveHour(today.getHours()) >12){
+    seconds+=" am"
+}
+else{
+    seconds+=" pm"
+}
+  
+hrs = today.getHours();
+if (hrs < 12)
+        greet = 'Good Morning';
+    else if (hrs >= 12 && hrs <= 17)
+        greet = 'Good Afternoon';
+    else if (hrs >= 17 && hrs <= 24)
+        greet = 'Good Evening';
+  
+document.getElementById('greet').innerHTML = greet;
+document.getElementById('lbl').innerHTML =`<div id="date"> It's ${date}, </div>`;
+document.getElementById('hour').innerHTML = hour;
+document.getElementById('min').innerHTML = minutes;
+document.getElementById('sec').innerHTML = seconds;
+
+}
+
 // END
 </script>
 
