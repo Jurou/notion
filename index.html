@@ -175,7 +175,7 @@ var month = new Array(12);
   month2[7] = "Aug";
   month2[8] = "Sep";
   month2[9] = "Oct";
-  month2[10] = "Novr";
+  month2[10] = "Nov";
   month2[11] = "Dec";
 var today = new Date();
 var hour = zeros(twelveHour(today.getHours()));
@@ -185,11 +185,11 @@ var dayOfWeek = weekday[today.getDay()];
 var monthOfYear = month2[today.getMonth()];
 var date = dayOfWeek+", " + today.getDate() + " "+ monthOfYear + " " +today.getFullYear()  ;
     
-if(twelveHour(today.getHours()) >12){
-    seconds+=" pm"
+if(today.getHours() >12){
+    seconds+=" am"
 }
 else{
-    seconds+=" am"
+    seconds+=" pm"
 }
   
 hrs = today.getHours();
